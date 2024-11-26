@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover Kaomojis and calculate your BMI with classification and health tips. Fun emojis and health tools in one place!">
+    <title>BMI Calculator with Classification</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .ad-slot {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            height: 100px;
+            background-color: #f8f9fa;
+            border: 2px dashed #ddd;
+            color: #888;
+            font-size: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar Section -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">BMI Calculator</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header Section -->
+<header class="header text-center bg-light py-4">
+    <h1>Welcome to the BMI Calculator</h1>
+    <p>Calculate your BMI and find out where you stand in the classification chart.</p>
+</header>
+
+<!-- BMI Calculator Section -->
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header text-center bg-primary text-white">
+            <h2>BMI Calculator</h2>
+        </div>
+        <div class="card-body">
+            <form id="bmiForm">
+                <div class="mb-3">
+                    <label for="age" class="form-label">Age (years)</label>
+                    <input type="number" id="age" class="form-control" placeholder="Enter your age" min="1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="weight" class="form-label">Weight (kg)</label>
+                    <input type="number" id="weight" class="form-control" placeholder="Enter your weight in kg" step="0.1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="height" class="form-label">Height (cm)</label>
+                    <input type="number" id="height" class="form-control" placeholder="Enter your height in cm" step="0.1" required>
+                </div>
+                <div class="d-grid">
+                    <button type="button" class="btn btn-primary" onclick="calculateBMI()">Calculate BMI</button>
+                </div>
+            </form>
+            <div class="mt-4">
+                <h5 class="text-center" id="result"></h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad Slot Before Chart -->
+    <div class="ad-slot">
+        Ad Slot: Place your advertisement here.
+    </div>
+
+    <!-- BMI Classification Chart -->
+    <div class="mt-5">
+        <h3 class="text-center">BMI Classification Chart</h3>
+        <canvas id="bmiChart" class="mt-4"></canvas>
+    </div>
+
+    <!-- Ad Slot After Chart -->
+    <div class="ad-slot">
+        Ad Slot: Place your advertisement here.
+    </div>
+
+    <!-- Classification Table -->
+    <div class="mt-5">
+        <h3 class="text-center">BMI Classification Table</h3>
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Classification</th>
+                    <th>BMI Range</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Underweight</td><td>Below 18.5</td></tr>
+                <tr><td>Normal</td><td>18.5 - 24.9</td></tr>
+                <tr><td>Overweight</td><td>25.0 - 29.9</td></tr>
+                <tr><td>Obesity (Class I)</td><td>30.0 - 34.9</td></tr>
+                <tr><td>Obesity (Class II)</td><td>35.0 - 39.9</td></tr>
+                <tr><td>Obesity (Class III)</td><td>40 and above</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- SEO Content Section -->
+<div class="container mt-4 seo-content">
+    <h2 class="text-center mb-4">What Are Affection Kaomojis?</h2>
+    <p>Affection Kaomojis, also known as "love kaomojis," are text-based emoticons that express feelings of affection, love, and warmth. But what makes these cute characters so special? Originating from Japan, these charming symbols allow users to communicate tender emotions digitally. Whether you're sending a sweet message to a loved one or simply expressing care, Affection Kaomojis help convey your feelings in a unique and fun way. How do Kaomojis differ from regular emojis? They offer a playful approach to expressing love without relying on images or traditional graphics!</p>
+
+    <h3>Why Are Affection Kaomojis So Popular?</h3>
+    <p>What makes Affection Kaomojis stand out in digital communication? These Kaomojis are popular because they allow users to express emotions more personally and creatively. Unlike standard text or emojis, they use a combination of keyboard characters to form meaningful designs. Perfect for conveying affection, warmth, gratitude, or care, these symbols help create a deeper emotional connection. How can you use them to strengthen your relationships? They help you add a personal touch to your messages, making your words feel more heartfelt and meaningful.</p>
+
+    <h3>What Are Some Popular Affection Kaomojis?</h3>
+    <p>Looking for the perfect Kaomoji to express your affection? Here are some of the most popular Affection Kaomojis that capture love and warmth:</p>
+    <ul>
+        <li>(｡♥‿♥｡) – The "Heart Eyes" Kaomoji, commonly used to express admiration and deep affection.</li>
+        <li>(´∩｡• ᵕ •｡∩`) – The "Cuddly Love" Kaomoji, conveying warmth, care, and affection in a gentle manner.</li>
+        <li>(´･ω･`) – The "Sad but Caring" Kaomoji, showing concern or affection for someone feeling down.</li>
+        <li>(ღ✪v✪)｡o♡ – The "Loving Kiss" Kaomoji, a sweet and playful symbol of love and affection.</li>
+        <li>(≧◡≦) – The "Joyful Love" Kaomoji, perfect for expressing happiness and affection with a smile.</li>
+        <li>(´⌣`ʃƪ) – The "Hugging Love" Kaomoji, often used to convey a virtual hug or embrace for someone you care about.</li>
+        <li>(♡´౪`♡) – The "Heartfelt Affection" Kaomoji, showing passion and deep affection for someone special.</li>
+    </ul>
+
+    <h3>How Can You Use Affection Kaomojis?</h3>
+    <p>How do you incorporate Affection Kaomojis into your conversations? Using Affection Kaomojis is simple! Just copy your favorite Kaomoji and paste it into your messages, social media posts, or emails. Whether you’re expressing love to a partner, sending care to a friend, or simply sharing affection with family, these symbols enhance your communication. What makes them even better? They add emotional depth to your messages, making them more personal and meaningful.</p>
+
+    <h3>How Do Affection Kaomojis Impact Communication?</h3>
+    <p>Why do Affection Kaomojis improve communication? These Kaomojis help you convey emotions like love and warmth in ways that words alone sometimes can’t. They create an emotional connection that bridges the gap in digital communication, especially when distance separates us. How do they foster stronger relationships? By adding a personal and intimate touch to messages, Affection Kaomojis help nurture closer bonds and convey love in a playful yet meaningful manner.</p>
+
+    <h3>What Are the Benefits of Using Affection Kaomojis?</h3>
+    <p>What benefits do Affection Kaomojis offer in conversations? These Kaomojis bring joy and affection to your digital interactions, lightening the mood and adding cheer. Whether you’re celebrating a special occasion or simply expressing care, they make your messages more expressive. How can they bring happiness? They serve as a reminder of love, friendship, and appreciation, helping to create a positive atmosphere in your conversations.</p>
+
+    <h3>Explore Our Affection Kaomojis Collection</h3>
+    <p>Wondering where to find the best Affection Kaomojis? Explore our collection to discover a variety of Kaomojis that express love, warmth, and tenderness. Whether you're looking to share a kiss, a hug, or a smile, you’ll find the perfect Kaomoji to communicate your feelings!</p>
+
+    <h3>Conclusion</h3>
+    <p>How can Affection Kaomojis change the way you communicate? These fun and heartfelt symbols provide a unique way to express love and affection digitally. Whether you’re sending romantic love, appreciation for a friend, or simply spreading kindness, Affection Kaomojis add a personal touch to your conversations. Try them out today to bring warmth and positivity to your messages!</p>
+
+    <!-- Add Images -->
+    <div class="row">
+        <div class="col-md-6">
+            <img src="https://www.getemoji.online/image1.jpg" alt="Affection Kaomojis Collection" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <img src="https://www.getemoji.online/image2.jpg" alt="Affection Kaomojis in Action" class="img-fluid">
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Footer Section -->
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2024 BMI Calculator - All rights reserved.</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function calculateBMI() {
+        const weight = parseFloat(document.getElementById('weight').value);
+        const height = parseFloat(document.getElementById('height').value) / 100; // Convert cm to m
+        const age = parseInt(document.getElementById('age').value);
+
+        if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0 || age <= 0) {
+            alert("Please enter valid values for all fields.");
+            return;
+        }
+
+        const bmi = (weight / (height * height)).toFixed(1);
+
+        let classification = '';
+        if (bmi < 18.5) {
+            classification = "Underweight";
+        } else if (bmi >= 18.5 && bmi <= 24.9) {
+            classification = "Normal";
+        } else if (bmi >= 25 && bmi <= 29.9) {
+            classification = "Overweight";
+        } else if (bmi >= 30 && bmi <= 34.9) {
+            classification = "Obesity (Class I)";
+        } else if (bmi >= 35 && bmi <= 39.9) {
+            classification = "Obesity (Class II)";
+        } else {
+            classification = "Obesity (Class III)";
+        }
+
+        document.getElementById('result').innerHTML = `Your BMI is <strong>${bmi}</strong>. Classification: <strong>${classification}</strong>.`;
+        updateChart(bmi);
+    }
+
+    function updateChart(bmi) {
+        const ctx = document.getElementById('bmiChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Underweight', 'Normal', 'Overweight', 'Obesity (Class I)', 'Obesity (Class II)', 'Obesity (Class III)'],
+                datasets: [{
+                    label: 'BMI Thresholds',
+                    data: [18.5, 24.9, 29.9, 34.9, 39.9, 50],
+                    backgroundColor: ['#17a2b8', '#28a745', '#ffc107', '#dc3545', '#c82333', '#bd2130']
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { title: { display: true, text: 'Classification' } },
+                    y: { title: { display: true, text: 'BMI Range' } }
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>
