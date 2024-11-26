@@ -95,27 +95,8 @@
 </script>
     </div>
 
-    <!-- BMI Classification Chart -->
-    <div class="mt-5">
-        <h3 class="text-center">BMI Classification Chart</h3>
-        <canvas id="bmiChart" class="mt-4"></canvas>
-    </div>
 
-    <!-- Ad Slot After Chart -->
-    <div class="ad-slot">
-       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147"
-     crossorigin="anonymous"></script>
-<!-- Ressponsive -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5525538810839147"
-     data-ad-slot="4345862479"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    </div>
+
 
     <!-- Classification Table -->
     <div class="mt-5">
@@ -137,6 +118,25 @@
             </tbody>
         </table>
     </div>
+    
+    
+        <!-- Ad Slot After Chart -->
+    <div class="ad-slot">
+       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147"
+     crossorigin="anonymous"></script>
+<!-- Ressponsive -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5525538810839147"
+     data-ad-slot="4345862479"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+    
+    
 </div>
 
 
@@ -207,27 +207,6 @@
         updateChart(bmi);
     }
 
-    function updateChart(bmi) {
-        const ctx = document.getElementById('bmiChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Underweight', 'Normal', 'Overweight', 'Obesity (Class I)', 'Obesity (Class II)', 'Obesity (Class III)'],
-                datasets: [{
-                    label: 'BMI Thresholds',
-                    data: [18.5, 24.9, 29.9, 34.9, 39.9, 50],
-                    backgroundColor: ['#17a2b8', '#28a745', '#ffc107', '#dc3545', '#c82333', '#bd2130']
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    x: { title: { display: true, text: 'Classification' } },
-                    y: { title: { display: true, text: 'BMI Range' } }
-                }
-            }
-        });
-    }
 </script>
 </body>
 </html>
